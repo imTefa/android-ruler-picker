@@ -40,6 +40,7 @@
 
         <attr name="indicator_interval" />
         <attr name="indicator_color" />
+        <attr name="long_indicator_color" />
         <attr name="indicator_width" />
     </declare-styleable>
 
@@ -56,6 +57,7 @@
 
         <attr name="indicator_interval" />
         <attr name="indicator_color" />
+        <attr name="long_indicator_color" />
         <attr name="indicator_width" />
 
         <!-- Color of the top notch -->

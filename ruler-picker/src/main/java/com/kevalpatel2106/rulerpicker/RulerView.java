@@ -55,6 +55,13 @@ final class RulerView extends View {
     private Paint mIndicatorPaint;
 
     /**
+     * {@link Paint} for the long line in the ruler view.
+     *
+     * @see #refreshPaint()
+     */
+    private Paint mLongIndicatorPaint;
+
+    /**
      * {@link Paint} to display the text on the ruler view.
      *
      * @see #refreshPaint()
@@ -143,6 +150,16 @@ final class RulerView extends View {
     @ColorInt
     private int mIndicatorColor = Color.WHITE;
 
+
+    /**
+     * Integer color of the long indicators.
+     *
+     * @see #setLongIndicatorColor(int)
+     * @see #getLongIndicatorColor()
+     */
+    @ColorInt
+    private int mLongIndicatorColor = Color.WHITE;
+
     /**
      * Height of the text, that is displayed on ruler in pixels.
      *
@@ -209,6 +226,10 @@ final class RulerView extends View {
                     mIndicatorColor = a.getColor(R.styleable.RulerView_indicator_color, Color.WHITE);
                 }
 
+                if (a.hasValue(R.styleable.RulerView_long_indicator_color)) {
+                    mLongIndicatorColor = a.getColor(R.styleable.RulerView_long_indicator_color, Color.WHITE);
+                }
+
                 if (a.hasValue(R.styleable.RulerView_indicator_width)) {
                     mIndicatorWidthPx = a.getDimensionPixelSize(R.styleable.RulerView_indicator_width,
                             4);
@@ -251,6 +272,11 @@ final class RulerView extends View {
         mIndicatorPaint.setColor(mIndicatorColor);
         mIndicatorPaint.setStrokeWidth(mIndicatorWidthPx);
         mIndicatorPaint.setStyle(Paint.Style.STROKE);
+
+        mLongIndicatorPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        mLongIndicatorPaint.setColor(mLongIndicatorColor);
+        mLongIndicatorPaint.setStrokeWidth(mIndicatorWidthPx);
+        mLongIndicatorPaint.setStyle(Paint.Style.STROKE);
 
         mTextPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mTextPaint.setColor(mTextColor);
@@ -333,7 +359,7 @@ final class RulerView extends View {
                 0,
                 mIndicatorInterval * value,
                 mLongIndicatorHeight,
-                mIndicatorPaint);
+                mLongIndicatorPaint);
     }
 
     /**
@@ -403,6 +429,17 @@ final class RulerView extends View {
         return mIndicatorColor;
     }
 
+
+    /**
+     * @return Color integer value of the long indicator color.
+     * @see #setLongIndicatorColor(int)
+     */
+    @CheckResult
+    @ColorInt
+    int getLongIndicatorColor() {
+        return mLongIndicatorColor;
+    }
+
     /**
      * Set the indicator color.
      *
@@ -410,6 +447,11 @@ final class RulerView extends View {
      */
     void setIndicatorColor(@ColorInt final int color) {
         mIndicatorColor = color;
+        refreshPaint();
+    }
+
+    void setLongIndicatorColor(@ColorInt final int color) {
+        mLongIndicatorColor = color;
         refreshPaint();
     }
 

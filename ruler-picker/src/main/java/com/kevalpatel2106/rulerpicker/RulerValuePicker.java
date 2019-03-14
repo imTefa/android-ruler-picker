@@ -171,6 +171,10 @@ public final class RulerValuePicker extends FrameLayout implements ObservableHor
                     setIndicatorColor(a.getColor(R.styleable.RulerValuePicker_indicator_color, Color.WHITE));
                 }
 
+                if (a.hasValue(R.styleable.RulerValuePicker_long_indicator_color)){
+                    setLongIndicatorColor(a.getColor(R.styleable.RulerValuePicker_long_indicator_color, Color.WHITE));
+                }
+
                 if (a.hasValue(R.styleable.RulerValuePicker_indicator_width)) {
                     setIndicatorWidth(a.getDimensionPixelSize(R.styleable.RulerValuePicker_indicator_width,
                             4));
@@ -500,6 +504,10 @@ public final class RulerValuePicker extends FrameLayout implements ObservableHor
      */
     public void setIndicatorColor(@ColorInt final int color) {
         mRulerView.setIndicatorColor(color);
+    }
+
+    public void setLongIndicatorColor(@ColorInt final int color){
+        mRulerView.setLongIndicatorColor(color);
     }
 
     /**
