@@ -15,7 +15,7 @@ package com.kevalpatel2106.sample
 
 import android.app.Activity
 import android.graphics.Color
-import android.support.annotation.StringRes
+import androidx.annotation.StringRes
 import com.jaredrummler.android.colorpicker.ColorPickerDialog
 import com.jaredrummler.android.colorpicker.ColorPickerDialogListener
 import com.jaredrummler.android.colorpicker.ColorShape
